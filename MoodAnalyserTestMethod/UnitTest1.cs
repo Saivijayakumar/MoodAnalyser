@@ -40,5 +40,16 @@ namespace MoodAnalyserTestMethod
             //Assert
             Assert.AreEqual(actual, expected);
         }
+        [TestMethod]
+        public void TestMethodForMessageNull()
+        {
+            //Arrange
+            MoodAnalyse mood = new MoodAnalyse(null);
+            string actual, expected = "happy";
+            //Act
+            actual = mood.CheckMood();
+            //Assert
+            Assert.AreEqual(actual, expected);
+        }
     }
 }
