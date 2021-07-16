@@ -43,13 +43,39 @@ namespace MoodAnalyserTestMethod
         [TestMethod]
         public void TestMethodForMessageNull()
         {
-            //Arrange
-            MoodAnalyse mood = new MoodAnalyse(null);
-            string actual, expected = "happy";
-            //Act
-            actual = mood.CheckMood();
-            //Assert
-            Assert.AreEqual(actual, expected);
+            try
+            {
+                //Act
+                string actual;
+                //Arrange
+                MoodAnalyse mood = new MoodAnalyse(null);
+                actual = mood.CheckMood();
+            }
+            catch (CustomMoodAnalyser ex)
+            {
+                string expected = "Message Should not be Null";
+                //Assert
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        [TestMethod]
+        public void TestMethodForMessageEmpty()
+        {
+            try
+            {
+                //Act
+                string actual;
+                //Arrange
+                MoodAnalyse mood = new MoodAnalyse(string.Empty);
+                actual = mood.CheckMood();
+            }
+            catch (CustomMoodAnalyser ex)
+            {
+                string expected = "Message should not be Empty";
+                //Assert
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
     }
+    
 }

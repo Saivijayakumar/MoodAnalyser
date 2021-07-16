@@ -13,12 +13,15 @@ namespace MoodAnalyser
         {
             this.message = message;
         }
-
         public string CheckMood()
         {
             try
             {
-                if (this.message.ToLower().Contains("sad"))
+                if (message.Equals(string.Empty))
+                {
+                    throw new CustomMoodAnalyser(CustomMoodAnalyser.ExceptionType.EMPTY_EXCEPTION, "Message should not be Empty");
+                }
+                else if (this.message.ToLower().Contains("sad"))
                 {
                     return "sad";
                 }
@@ -27,10 +30,11 @@ namespace MoodAnalyser
                     return "happy";
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                return "happy";
+                throw new CustomMoodAnalyser(CustomMoodAnalyser.ExceptionType.NULL_EXCEPTION, "Message Should not be Null");
             }
+
         }
     }
 }
