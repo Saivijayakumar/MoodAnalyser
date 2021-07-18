@@ -51,7 +51,7 @@ namespace MoodAnalyserTestMethod
                 MoodAnalyse mood = new MoodAnalyse(null);
                 actual = mood.CheckMood();
             }
-            catch (CustomMoodAnalyser ex)
+            catch (CustomMoodAnalyserException ex)
             {
                 string expected = "Message Should not be Null";
                 //Assert
@@ -69,12 +69,29 @@ namespace MoodAnalyserTestMethod
                 MoodAnalyse mood = new MoodAnalyse(string.Empty);
                 actual = mood.CheckMood();
             }
-            catch (CustomMoodAnalyser ex)
+            catch (CustomMoodAnalyserException ex)
             {
                 string expected = "Message should not be Empty";
                 //Assert
                 Assert.AreEqual(expected, ex.Message);
             }
+        }
+        [TestMethod]
+        [TestCategory("objectCreation")]
+        public void ObjectCreationUsingReflection()
+        {
+            Object obj = null;
+            MoodAnalyse mood = new MoodAnalyse();
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalyse", "MoodAnalyse");
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            obj.Equals(mood);
         }
     }
     

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyser
 {
-    public class CustomMoodAnalyser:Exception
+    public class CustomMoodAnalyserException:Exception
     {
         ExceptionType type;
         public enum ExceptionType
         {
-            EMPTY_EXCEPTION,NULL_EXCEPTION
+            NULL_EXCEPTION, EMPTY_EXCEPTION, CLASS_NOT_FOUND, CONSTRUCTOR_NOT_FOUND
+
         }
-        public CustomMoodAnalyser(ExceptionType type, string message) : base(message)
+        public CustomMoodAnalyserException(ExceptionType type, string message) : base(message)
         {
             this.type = type;
         }

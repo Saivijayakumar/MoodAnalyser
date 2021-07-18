@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomMoodAnalyser.cs" />
+    <Compile Include="CustomMoodAnalyserException.cs" />
     <Compile Include="MoodAnalyse.cs" />
+    <Compile Include="MoodAnalyserFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

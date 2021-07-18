@@ -9,6 +9,12 @@ namespace MoodAnalyser
     public class MoodAnalyse
     {
         string message;
+        //defualt constructor
+        public MoodAnalyse()
+        {
+            Console.WriteLine("Default Constructor for reflection");
+        }
+        //parameterized constructor
         public MoodAnalyse(string message)
         {
             this.message = message;
@@ -19,7 +25,7 @@ namespace MoodAnalyser
             {
                 if (message.Equals(string.Empty))
                 {
-                    throw new CustomMoodAnalyser(CustomMoodAnalyser.ExceptionType.EMPTY_EXCEPTION, "Message should not be Empty");
+                    throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.EMPTY_EXCEPTION, "Message should not be Empty");
                 }
                 else if (this.message.ToLower().Contains("sad"))
                 {
@@ -32,7 +38,7 @@ namespace MoodAnalyser
             }
             catch (NullReferenceException)
             {
-                throw new CustomMoodAnalyser(CustomMoodAnalyser.ExceptionType.NULL_EXCEPTION, "Message Should not be Null");
+                throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.NULL_EXCEPTION, "Message Should not be Null");
             }
 
         }
