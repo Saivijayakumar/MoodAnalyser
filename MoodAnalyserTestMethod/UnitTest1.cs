@@ -138,6 +138,67 @@ namespace MoodAnalyserTestMethod
             obj.Equals(mood);
         }
         //-----------------------------------------------------------------------------
+        /// <summary>
+        /// TC1 - Object creation of parameterized constructor 
+        /// </summary>
+        [TestMethod]
+        [TestCategory("ParameterizedConstructor")]
+        public void ObjectCreationParameterizedConstructor()
+        {
+            Object obj;
+            MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            obj.Equals(mood);
+        }
+        /// <summary>
+        /// TC2 - Object creation of parameterized constructor class not found exception
+        /// </summary>
+        [TestMethod]
+        [TestCategory("ParameterizedConstructorClassException")]
+        public void ObjectCreationParameterizedConstructorClassException()
+        {
+            Object obj;
+            MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            obj.Equals(mood);
+        }
+        /// <summary>
+        /// TC3 - Object creation of parameterized constructor class not found exception
+        /// </summary>
+        [TestMethod]
+        [TestCategory("ParameterizedConstructorClassException")]
+        public void ObjectCreationParameterizedConstructorCOnstructorException()
+        {
+            Object obj;
+            MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            obj.Equals(mood);
+        }
+
     }
 
 }
