@@ -27,7 +27,7 @@ namespace MoodAnalyser
                     var obj = Activator.CreateInstance(classType);
                     return obj;
                 }
-                catch (CustomMoodAnalyserException ex)
+                catch (CustomMoodAnalyserException)
                 {
                     //exception if class not found
                     throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND, "Class Not found");
@@ -38,7 +38,6 @@ namespace MoodAnalyser
                 //exception if constructor not found
                 throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor Not found");
             }
-
         }
     }
 }

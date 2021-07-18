@@ -76,6 +76,10 @@ namespace MoodAnalyserTestMethod
                 Assert.AreEqual(expected, ex.Message);
             }
         }
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// TC 1 Class name and constructore name
+        /// </summary>
         [TestMethod]
         [TestCategory("objectCreation")]
         public void ObjectCreationUsingReflection()
@@ -87,12 +91,53 @@ namespace MoodAnalyserTestMethod
                 MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
                 obj = moodAnalyse.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalyse", "MoodAnalyse");
             }
-            catch (CustomMoodAnalyserException ex)
+            catch (CustomMoodAnalyserException e)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(e.Message);
             }
             obj.Equals(mood);
         }
+        /// <summary>
+        /// TC 2 class not found
+        /// </summary>
+        [TestMethod]
+        [TestCategory("objectCreationClassException")]
+        public void ObjectCreationUsingReflectionClassException()
+        {
+            Object obj = null;
+            MoodAnalyse mood = new MoodAnalyse();
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalyse", "MoodAnalyse");
+            }
+            catch (CustomMoodAnalyserException e)
+            {
+                throw new Exception(e.Message);
+            }
+            obj.Equals(mood);
+        }
+        /// <summary>
+        /// TC3 constructor not found
+        /// </summary>
+        [TestMethod]
+        [TestCategory("objectCreationConstructorException")]
+        public void ObjectCreationUsingReflectionConstructorException()
+        {
+            Object obj = null;
+            MoodAnalyse mood = new MoodAnalyse();
+            try
+            {
+                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
+                obj = moodAnalyse.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalyse", "MoodAnalyse");
+            }
+            catch (CustomMoodAnalyserException e)
+            {
+                throw new Exception(e.Message);
+            }
+            obj.Equals(mood);
+        }
+        //-----------------------------------------------------------------------------
     }
-    
+
 }
