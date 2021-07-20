@@ -39,7 +39,7 @@ namespace MoodAnalyser
                 throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor Not found");
             }
         }
-        public Object CreateMoodAnalyserParameterizedConstructor(string className, string constructorName, string message)
+        public static Object CreateMoodAnalyserParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyse);
             if (type.Name.Equals(className) || type.FullName.Equals(className))
@@ -59,6 +59,23 @@ namespace MoodAnalyser
             else
             {
                 throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor not Found");
+            }
+        }
+        public static string InvokeAnalyseMood(string message, string methodName)
+        {
+            try
+            {
+                string className = "MoodAnalyser.MoodAnalyse";
+                Type type = Type.GetType(className);
+                //Creating object with parameter constructor
+                object moodAnalyserObj = CreateMoodAnalyserParameterizedConstructor(className,"MoodAnalyse",message);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                object mood = methodInfo.Invoke(moodAnalyserObj, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new CustomMoodAnalyserException(CustomMoodAnalyserException.ExceptionType.METHOD_NOT_EXIST, "wrong method name");
             }
         }
     }

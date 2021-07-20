@@ -137,7 +137,7 @@ namespace MoodAnalyserTestMethod
             }
             obj.Equals(mood);
         }
-        //-----------------------------------------------------------------------------
+        //-----------------------------------UC5------------------------------------------
         /// <summary>
         /// TC1 - Object creation of parameterized constructor 
         /// </summary>
@@ -149,8 +149,7 @@ namespace MoodAnalyserTestMethod
             MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
             try
             {
-                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
-                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+                obj = MoodAnalyserFactory.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
             }
             catch (CustomMoodAnalyserException ex)
             {
@@ -169,8 +168,7 @@ namespace MoodAnalyserTestMethod
             MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
             try
             {
-                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
-                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+                obj = MoodAnalyserFactory.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
             }
             catch (CustomMoodAnalyserException ex)
             {
@@ -189,8 +187,7 @@ namespace MoodAnalyserTestMethod
             MoodAnalyse mood = new MoodAnalyse("I am in a happy mood");
             try
             {
-                MoodAnalyserFactory moodAnalyse = new MoodAnalyserFactory();
-                obj = moodAnalyse.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
+                obj = MoodAnalyserFactory.CreateMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "I am in a happy mood");
             }
             catch (CustomMoodAnalyserException ex)
             {
@@ -198,7 +195,33 @@ namespace MoodAnalyserTestMethod
             }
             obj.Equals(mood);
         }
-
+        //----------------------------------UC6-------------------------------------
+        [TestMethod]
+        [TestCategory("InvokeAnalyseMood")]
+        public void InvokeAnalyseMoodReturnsHappy()
+        {
+            // TC 6.1
+            string message = "HAPPY";
+            string methodName = "CheckMood";
+            string actual = MoodAnalyserFactory.InvokeAnalyseMood(message, methodName);
+            Assert.AreEqual("happy", actual);
+        }
+        [TestMethod]
+        [TestCategory("InvokeAnalyseMood")]
+        public void InvokeAnalyseMoodReturnsNoSuchMethod()
+        {
+            try
+            {
+                // TC 6.2
+                string message = "HAPPY";
+                string methodName = "MethodName";
+                string actual = MoodAnalyserFactory.InvokeAnalyseMood(message, methodName);
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual("wrong method name", ex.Message);
+            }
+        }
     }
 
 }
