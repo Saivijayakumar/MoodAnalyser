@@ -223,24 +223,23 @@ namespace MoodAnalyserTestMethod
             }
         }
         //**************************************UC7******************************************
-
+        // TC 7.1
         [TestMethod]
         [TestCategory("ChangeMoodDynamically")]
         public void SetFieldReturnsHappy()
         {
-            // TC 7.1
             string message = "sad";
             string fieldName = "message";
             string actual = MoodAnalyserFactory.SetField(message, fieldName);
             Assert.AreEqual("sad", actual);
         }
+        // TC 7.2
         [TestMethod]
         [TestCategory("ChangeMoodDynamically")]
         public void SetFieldReturnsNoSuchField()
         {
             try
             {
-                // TC 7.2
                 string message = "happy";
                 string fieldName = "fieldName";
                 string actual = MoodAnalyserFactory.SetField(message, fieldName);
@@ -250,13 +249,13 @@ namespace MoodAnalyserTestMethod
                 Assert.AreEqual("field not found check the field name", ex.Message);
             }
         }
+        // TC 7.3
         [TestMethod]
         [TestCategory("ChangeMoodDynamically")]
         public void SetFieldReturnsNullMessage()
         {
             try
             {
-                // TC 7.3
                 string message = null;
                 string fieldName = "message";
                 string actual = MoodAnalyserFactory.SetField(message, fieldName);
