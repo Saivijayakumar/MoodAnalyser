@@ -11,7 +11,7 @@ namespace MoodAnalyser
         ExceptionType type;
         public enum ExceptionType
         {
-            NULL_EXCEPTION, EMPTY_EXCEPTION, CLASS_NOT_FOUND, CONSTRUCTOR_NOT_FOUND, METHOD_NOT_EXIST
+            NULL_EXCEPTION, EMPTY_EXCEPTION, CLASS_NOT_FOUND, CONSTRUCTOR_NOT_FOUND, METHOD_NOT_EXIST, FIELD_NOT_FOUND
 
         }
         public CustomMoodAnalyserException(ExceptionType type, string message) : base(message)
